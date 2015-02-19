@@ -267,7 +267,7 @@ master: section-title
 master: section-title
 -->
 
-![](/images/brian-roaring.jpg)
+![](images/brian-roaring.jpg)
 # Avail
 
 ---
@@ -294,7 +294,7 @@ $ npm install what-you-need
 master: section-title
 -->
 
-![](/images/brian-roaring.jpg)
+![](images/brian-roaring.jpg)
 # Beware
 
 ---
