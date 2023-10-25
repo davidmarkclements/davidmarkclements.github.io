@@ -1,3 +1,24 @@
+<style>body { background: #000; color: greenyellow; font-size: 1.2em; }</style>
+<pre>
+  Pear Invite Launcher
+  Invite links are handled client-side only
+  We use the hash part of the link, browsers never send the hash to the server.
+</pre>
 <script>
-  if (location.hash.startsWith('#pear:')) location.href = location.hash.slice(1)
+  const pre = document.querySelector('pre')
+  const explain = pre.innerText
+  const wakeup = () => {
+    if (location.hash.startsWith('#pear:')) {
+      const link = location.hash.slice(1)
+      pre.innerText = 'Pear Invite Launcher\n\nOpening -> ' + link
+      location.href = link
+    } else {
+      pre.innerText = explain
+    }
+  }
+  wakeup()
+  window.addEventListener('hashchange', wakeup)
+  
 </script>
+
+<pre>
