@@ -1,5 +1,7 @@
-<style>body, a { background: #444; color: lightblue; font-size: 1.2em; font-family: monospace }</style>
-<pre>If the invitation succeeded it is now safe to close. If invitation failed: </pre>
+<style>
+  body, a { background: #444; color: lightblue; font-size: 1.2em; font-family: monospace; word-wrap: break-word; overflow-wrap: break-word; }
+</style>
+<pre>If the invitation succeeded it is now safe to close.</pre>
 <a href="https://keet.io/download">Download Keet</a>
 <script>
   const pre = document.querySelector('pre')
@@ -15,9 +17,7 @@
     location.href = link
     let s = 9
     const countdown = () => {
-      pre.innerHTML = 'Launching ' + 
-        ' '.repeat(42)
-        + '[ Page will reset in ' + s + 's ]'
+      pre.innerHTML = 'Launching  [ Page will reset in ' + s + 's ]'
       s--
     }
     countdown()
