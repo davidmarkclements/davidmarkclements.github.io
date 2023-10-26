@@ -7,6 +7,7 @@
 <script>
   const pre = document.querySelector('pre')
   const a = document.querySelector('a')
+  const pretext = pre.innerText
   const href = a.href
   const dl = a.innerText
   if (location.hash.startsWith('#pear://keet') || location.hash.startsWith('#pear:keet')) {
@@ -21,10 +22,19 @@
       pre.innerHTML = 'Launching  [ Page will reset in ' + s + 's ]'
       s--
     }
+    const interval = setInterval(countdown, 1000)
     countdown()
-    setInterval(countdown, 1000)
-    setTimeout(() => {
+    const reset = () => {
       location.href = location.href.slice(0, location.href.indexOf('#'))
+      // in some scenarios page (e.g. mobile when alert is not interacted with) will not reload
+      // fallback to resetting state
+      pre.innerText = pretext
+      a.href = href
+      a.innerText = dl
+    }
+    setTimeout(() => {
+      reset()
+      clearInterval(interval)
     }, (s * 1000) + 1000)
   }
 </script>
