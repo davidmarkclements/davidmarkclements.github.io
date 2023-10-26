@@ -1,24 +1,29 @@
-<style>body { background: #000; color: greenyellow; font-size: 1.2em; }</style>
-<pre>
-  Pear Invite Launcher
-  Invite links are handled client-side only
-  We use the hash part of the link, browsers never send the hash to the server.
-</pre>
+<style>body, a { background: #444; color: lightblue; font-size: 1.2em; font-family: monospace }</style>
+<pre>If the invitation succeeded it is now safe to close. If invitation failed: </pre>
+<a href="https://keet.io/download">Download Keet</a>
 <script>
   const pre = document.querySelector('pre')
-  const explain = pre.innerText
-  const wakeup = () => {
-    if (location.hash.startsWith('#pear:')) {
-      const link = location.hash.slice(1)
-      pre.innerText = 'Pear Invite Launcher\n\nOpening -> ' + link
-      location.href = link
-    } else {
-      pre.innerText = explain
+  const a = document.querySelector('a')
+  const href = a.href
+  const dl = a.innerText
+  if (location.hash.startsWith('#pear://keet') || location.hash.startsWith('#pear:keet')) {
+    const link = location.hash.slice(1)
+    a.href = link 
+    a.innerText = link
+    document.body.appendChild(a)
+    pre.innerText = 'Opening :- '
+    location.href = link
+    let s = 9
+    const countdown = () => {
+      pre.innerHTML = 'Launching ' + 
+        ' '.repeat(42)
+        + '[ Page will reset in ' + s + 's ]'
+      s--
     }
+    countdown()
+    setInterval(countdown, 1000)
+    setTimeout(() => {
+      location.href = location.href.slice(0, location.href.indexOf('#'))
+    }, (s * 1000) + 1000)
   }
-  wakeup()
-  window.addEventListener('hashchange', wakeup)
-  
 </script>
-
-<pre>
